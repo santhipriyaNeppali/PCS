@@ -1,0 +1,22 @@
+<div class="container row">
+    <div class="col-md-6">
+      <h2 class="resultHeader mt-4">Suburbs with postcode {{ postcode }}</h2>
+      <app-result-view [suburbs] = "suburbsRef">
+      </app-result-view>
+    </div>
+    <div class="col-md-6" *ngIf="nearbySuburbsRef.length > 0">
+      <h2 class="resultHeader mt-4">Suburbs within 4km range of {{ selectedSub.name }} </h2>
+      <app-result-view [suburbs] = "nearbySuburbsRef" >
+      </app-result-view>
+    </div>
+
+    <ngx-spinner
+      size = "medium"
+      color = "#00205b"
+      type = "ball-spin-clockwise"
+      [fullScreen] = "true"
+    >
+      <p style="color: #00205b" > Loading... </p>
+    </ngx-spinner>
+
+  </div>

@@ -1,0 +1,17 @@
+{
+  "name": "pcs-server",
+  "version": "1.0.0",
+  "description": "Server to interact with Australian Postcode API",
+  "main": "index.js",
+  "scripts": {
+    "test": "",
+    "start": "node index.js"
+  },
+  "author": "santhi",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.0"
+  }
+}

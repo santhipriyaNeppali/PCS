@@ -1,0 +1,24 @@
+<header>
+    <nav class="navbar sticky-top">
+      <div class="headerContainer row">
+        <div class="">
+          <a href="#" class="navbar-brand">Postcode Search</a>
+        </div>
+        <form name="form" [formGroup]="searchForm" class="navbar-item" (ngSubmit) = "onSubmit()">
+          <div class="input-group mb-3 mt-10">
+            <input type="search" id="postcode" class="form-control" aria-label="Search" 
+            required minlength="3" maxlength="4" pattern="(^[0][1-9]+)|([1-9]\d*)"
+            placeholder="Enter Postcode here.." formControlName = "postcode" name="postcode" >
+            <div class="input-group-append searchButton">
+              <button type="submit" name="search" class="searchButton" [disabled]="!searchForm.valid">Search</button>
+            </div>
+          </div>
+          <p class="exText">Ex: 509, 5093</p> 
+        </form> 
+    </div>
+    </nav>
+</header>
+    
+    
+    
+    

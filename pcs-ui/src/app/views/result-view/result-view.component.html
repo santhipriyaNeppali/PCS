@@ -1,0 +1,14 @@
+<div *ngIf = "suburbs.length == 0">
+    No suburbs found!
+</div>
+<a 
+    class="list-group-item"
+    *ngFor="let suburb of suburbs; let i = index"
+    this.selectedSuburb = suburb;
+    (click) = "onSuburbSelect($event, suburb)" [class.active] = "isLinkActive(suburb)" 
+    [class.disabled] = "false"
+    title = "Click to get suburbs within in 4km range"
+>
+<app-location-item [suburb] = "suburb"></app-location-item>
+
+</a>
