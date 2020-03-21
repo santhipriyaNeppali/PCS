@@ -12,34 +12,33 @@ import { suburb } from 'src/app/models/suburb.model';
 })
 export class ResultMainComponent implements OnInit {
 
-
   @Input() suburbsRef : Array<object> = [];
   @Input() nearbySuburbsRef : Array<Object> = [];
   selectedSub: suburb;
   suburbSubscriber: Subscription = new Subscription();
   suburbNearbySubscriber: Subscription = new Subscription();
-  postcode : string; 
+  postcode : string;
+  noSuburbsFound: boolean = false; 
+  displayResults: boolean = false;
   
-
-  constructor(public postCodeService : PostcodeService, 
+  constructor(private postCodeService : PostcodeService, 
       private spinner: NgxSpinnerService,
-      public route: ActivatedRoute,
+      private route: ActivatedRoute,
       private router: Router) { 
       }
 
   ngOnInit() {
 
+      this.resetData();
+
       this.route.queryParams.subscribe((params) => {
       if (params['distance']) {
-        this.spinner.show();
-        
-        this.selectedSub = this.postCodeService.getSelectedSuburb();
-        const obj = Object.assign(this.selectedSub);
-        obj.distance = params['distance'];
-
-        this.suburbSubscriber = this.postCodeService.getSuburbsByDistance(obj).subscribe(res => {
+         this.spinner.show();
+        //To fetch the suburbs within given range of selected cities
+        this.suburbSubscriber = this.postCodeService.getSuburbsByDistance(params['distance'])
+        .subscribe(res => {
           this.nearbySuburbsRef = res;
-          console.log(res);
+          this.selectedSub = this.postCodeService.getSelectedSuburb();
           this.spinner.hide();
         }, err => {
           console.log(err);
@@ -47,31 +46,41 @@ export class ResultMainComponent implements OnInit {
         });
 
       } else if(params['postcode']){
-        this.spinner.show();
+        //To fetch suburbs with given postcode
         this.postcode = params['postcode'];
-        this.suburbSubscriber = this.postCodeService.getSuburbs(this.postcode).subscribe(res => {
+        this.spinner.show();
+
+        this.suburbSubscriber = this.postCodeService.getSuburbs(this.postcode)
+        .subscribe(res => {
+          this.resetData();
           this.suburbsRef = res;
-          this.nearbySuburbsRef = [];
           this.spinner.hide();
+          this.displayResults = true;
+          if(Array.isArray(res) && res.length == 0){
+            this.noSuburbsFound = true;
+          }
         }, err => {
           console.log(err);
           this.router.navigate(['../../error']);
         }
         );
+      }else{
+        this.router.navigate(['/']);
       }
-      
     });  
   }
 
-  restData(){
-    this.suburbsRef = [];
+  resetData(){
     this.nearbySuburbsRef = [];
+    this.noSuburbsFound = false;
+    this.displayResults = false;
+    this.selectedSub = undefined;
   }
 
   ngOnDestroy(){
     this.suburbSubscriber.unsubscribe();
     this.suburbNearbySubscriber.unsubscribe();
-    this.restData();
+    this.resetData();
   }
 
 }

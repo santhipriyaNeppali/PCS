@@ -8,7 +8,7 @@ import { ErrorpageComponent } from './views/errorpage/errorpage.component';
 const routes: Routes = [
     { path: 'error', component: ErrorpageComponent },
     { path: 'suburbs', component: ResultMainComponent, 
-    children :[
+     children :[
       { path: 'radius', component: ResultViewComponent}
     ]
   },

@@ -1,11 +1,16 @@
+@import '../../../css/colorPallette';
+
 .resultHeader{
-    background-color: #655eb5;
-    color: white;
+    color: @themeColorDark;
     padding: 0.6em;
     width: 100%;
     border-radius: 1rem;
     font-size: 1.2rem;
     text-align: center;
+}
+
+.loadingText{
+    color: @themeColorDark;
 }
 
 .container{
@@ -14,4 +19,10 @@
 
 h4{
     margin-top: 30%;
+}
+
+.subHeader{
+    font-size: 1.2em;
+    color:@errorTextColor;
+    text-align: center;
 }

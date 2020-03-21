@@ -1,22 +1,24 @@
+@import '../../../css/colorPallette';
+
 nav{
-    background-color: #00205b;
-    background: -webkit-gradient(linear,left top,right top,from(#00205b),to(#004181));
-    background: -o-linear-gradient(left,#00205b,#004181);
-    background: linear-gradient(to right,#00205b,#004181);
+    background-color: @themeColorDark;
+    background: -webkit-gradient(linear,left top,right top,from(@themeColorDark),to(@themeColorLight));
+    background: -o-linear-gradient(left,@themeColorDark,@themeColorLight);
+    background: linear-gradient(to right,@themeColorDark,@themeColorLight);
 }
 
 .navbar-brand{
-    color: white;
+    color: @navTextColor;
 }
 
 .searchButton{
     border-radius: 0 0.5rem 0.5rem 0;
     border: none;
-    background-color:  rgb(228, 222, 222);
+    background-color: @greyColor;
     font-weight: bold;
 }
 
-form input{
+.searchForm input{
     border-radius: 0.5rem 0 0 0.5rem;
     border: none;
     font-weight: bold;
@@ -30,12 +32,11 @@ form input{
     margin-left: 30%;
     margin-top: 2em;
     margin-bottom: 2em;
-    //background-color: #00205b;
 }
 
 .exText{
     margin-top:-10px;
-    color: white;
+    color: @navTextColor;
     font-size: 0.8rem;
     margin-left:10px;
 }

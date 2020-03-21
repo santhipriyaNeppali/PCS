@@ -1,12 +1,13 @@
 <div class="container row">
-    <div class="col-md-6">
-      <h2 class="resultHeader mt-4">Suburbs with postcode {{ postcode }}</h2>
-      <app-result-view [suburbs] = "suburbsRef">
+    <div class="col-md-6 leftPanel" *ngIf="displayResults">
+      <h2 class="resultHeader mt-4" >Suburbs with postcode {{ postcode }}</h2>
+      <h3 class="mt-4 subHeader" *ngIf="noSuburbsFound">No Suburbs Found!</h3>
+      <app-result-view [suburbs] = "suburbsRef" [mode] = "'suburbsByPostcode'">
       </app-result-view>
     </div>
-    <div class="col-md-6" *ngIf="nearbySuburbsRef.length > 0">
-      <h2 class="resultHeader mt-4">Suburbs within 4km range of {{ selectedSub.name }} </h2>
-      <app-result-view [suburbs] = "nearbySuburbsRef" >
+    <div class="col-md-6 rightPanel" *ngIf="!noSuburbsFound && nearbySuburbsRef.length">
+      <h2 class="resultHeader mt-4" *ngIf="displayResults" >Suburbs within 4km range of {{ selectedSub.name }} </h2>
+      <app-result-view [suburbs] = "nearbySuburbsRef" [mode] = "'suburbsNearby'">
       </app-result-view>
     </div>
 

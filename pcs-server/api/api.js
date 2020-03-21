@@ -1,10 +1,8 @@
-const api_url = "http://v0.postcodeapi.com.au/";
-const api_suburbs_url = api_url+"suburbs.json";
 const fetch = require('node-fetch');
-const express = require("express");
 
-var app = express();
+const api_url = process.env.api_url || "http://v0.postcodeapi.com.au/";
 
+const api_suburbs_url = api_url+"suburbs.json";
 
 async function getSuburbs(params) {
     const response = await fetch(api_suburbs_url+"?postcode="+params.code+"");

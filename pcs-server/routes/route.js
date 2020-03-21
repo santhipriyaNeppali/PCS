@@ -1,14 +1,6 @@
     const api = require('../api/api');
-    const fetch = require('node-fetch');
-    
     const express = require('express');
     const router = express.Router();
-
-    router.get('**',(req,res,next)=>{
-        res.setHeader('Access-Control-Allow-Origin','*');
-        res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
-        next();
-    })
 
     router.get('/suburbs/:code' , (req,res,next)=>{
         const response = api.getSuburbs(req.params);
