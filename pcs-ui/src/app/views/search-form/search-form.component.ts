@@ -15,9 +15,10 @@ import { Route } from '@angular/compiler/src/core';
 export class SearchFormComponent implements OnInit {
 
   postcode : FormControl =  new FormControl('', [Validators.required,
-    Validators.minLength(3), 
+    Validators.minLength(3),
     Validators.pattern(/^-?(0|[1-9]\d*)?$/)]);
   searchForm = new FormGroup({postcode:this.postcode});
+  formSubmitted: boolean = false;
 
   constructor( public router: Router, public route: ActivatedRoute){
   }
@@ -26,9 +27,11 @@ export class SearchFormComponent implements OnInit {
   }
 
   onSubmit(){
-    this.router.navigate(['suburbs'], { queryParams: {postcode : this.postcode.value}, relativeTo: this.route});
+    this.formSubmitted = true;
+    if( this.searchForm.valid){
+     this.router.navigate(['suburbs'],{ queryParams: {postcode : this.postcode.value}, relativeTo: this.route});
+     this.formSubmitted = false;
+    }
   }
-
- 
 
 }

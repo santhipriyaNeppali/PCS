@@ -1,7 +1,6 @@
 <a 
     class="list-group-item"
-    *ngFor="let suburb of suburbs; let i = index"
-    this.selectedSuburb = suburb;
+    *ngFor="let suburb of suburbs; let i = index" [attr.mode]="mode" 
     (click) = "onSuburbSelect(suburb)" [class.active] = "isLinkActive(suburb)" 
     [class.disabled] = "false" [attr.title] = "mode == 'suburbsByPostcode' ?  'click to get suburbs within 4km range': ''"
 >

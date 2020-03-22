@@ -74,7 +74,6 @@ export class ResultMainComponent implements OnInit {
     this.nearbySuburbsRef = [];
     this.noSuburbsFound = false;
     this.displayResults = false;
-    this.selectedSub = undefined;
   }
 
   ngOnDestroy(){

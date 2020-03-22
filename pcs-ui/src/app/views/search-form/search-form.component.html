@@ -6,14 +6,14 @@
         </div>
         <form class="searchForm navbar-item" name="form" [formGroup]="searchForm" (ngSubmit) = "onSubmit()">
           <div class="input-group mb-3 mt-10">
-            <input type="search" id="postcode" class="form-control" aria-label="Search" 
-            required minlength="3" maxlength="4" pattern="(^[0][1-9]+)|([1-9]\d*)"
+            <input type="search" id="postcode" class="form-control" aria-label="Search" maxlength="4" 
             placeholder="Enter Postcode here.." formControlName = "postcode" name="postcode" >
             <div class="input-group-append searchButton">
-              <button type="submit" name="search" class="searchButton" [disabled]="!searchForm.valid">Search
+              <button type="submit" name="search" class="searchButton">Search
               </button>
             </div>
           </div>
+          <p class="errText" *ngIf="!searchForm.valid && !searchForm.pristine && formSubmitted && postcode.value">Invalid Postcode</p>
           <p class="exText">Ex: 509, 5093</p> 
         </form> 
     </div>
