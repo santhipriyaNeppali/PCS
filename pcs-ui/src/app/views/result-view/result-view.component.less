@@ -1,14 +1,16 @@
 @import '../../../css/colorPallette';
 
-a.list-group-item.active{
-    text-decoration: none;
-    background-color: @cardColor;
+a[mode='suburbsByPostcode'].list-group-item.active, a[mode='suburbsByPostcode'].list-group-item:focus{
     color: black;
     padding:0.5rem;
+    border-color: #4db8ff;
+    background-color: #4db8ff;
+    
 }
 
 a[mode='suburbsByPostcode']:hover{
     background-color: @cardHoverColor;
+    text-decoration: none;
 }
 
 .card-header{
@@ -18,5 +20,7 @@ a[mode='suburbsByPostcode']:hover{
 
 a{
     padding:0.5rem;
+    color: black;
+    text-decoration: none;
 }
 

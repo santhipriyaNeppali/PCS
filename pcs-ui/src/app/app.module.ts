@@ -12,6 +12,10 @@ import { ResultViewComponent } from './views/result-view/result-view.component';
 import { ResultMainComponent } from './views/result-main/result-main.component';
 import { LocationItemComponent } from './views/result-view/location-item/location-item.component';
 import { ErrorpageComponent } from './views/errorpage/errorpage.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule} from '@angular/material/dialog';
+import { GpsModalComponent } from './views/result-view/gps-modal/gps-modal.component';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -21,14 +25,19 @@ import { ErrorpageComponent } from './views/errorpage/errorpage.component';
     ResultMainComponent,
     LocationItemComponent,
     ErrorpageComponent,
+    GpsModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     NgxSpinnerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatButtonModule 
   ],
+  entryComponents: [GpsModalComponent],
   providers: [PostcodeService],
   bootstrap: [AppComponent]
 })

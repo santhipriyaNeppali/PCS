@@ -2,6 +2,9 @@
 <div class="card">
 <div class="card-header">
     <p class="card-text">{{ suburb.name }}, {{ suburb.state.name }}, {{ suburb.state.abbreviation }} {{ suburb.postcode }}</p>
+    <a href="javascript:;" class="card-link" (click)="clickLink($event)" title="Opens a popup">
+        <img src="./assets/icons/gps.jpg" class="gpsIcon">View on Map</a>
 </div>
+
 </div>
    

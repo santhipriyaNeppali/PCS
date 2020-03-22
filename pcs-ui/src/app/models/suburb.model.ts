@@ -4,8 +4,8 @@ export class suburb {
         public name: String,
         public state: state,
         public locality: String,
-        public latitude: String,
-        public longitude: String,
+        public latitude: number,
+        public longitude: number,
         public selected: boolean
     ) {  }
 }

@@ -1,0 +1,8 @@
+
+<h1 mat-dialog-title> {{ suburb.name }}, {{suburb.state.name}} {{suburb.state.abbreviation}}, {{suburb.postcode}}</h1>
+<div mat-dialog-content>
+    <div #mapContainer id="map"></div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Close</button>
+</div>
